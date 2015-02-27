@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iziweb Admin | Home page</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header id="header" class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a id="menu-button" type="button" class="pull-left">
+                <i class="fa fa-dedent fa-lg"></i>
+            </a>
+            <a id="menu-logo" class="navbar-brand">
+                Iziweb Admin
+            </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Xem site</a></li>
+            <li><a href="#">Thoát <i class="fa fa-sign-out"></i></a></li>
+        </ul>
+    </div>
+</header>
+<nav id="left-column">
+    <ul id="left-menu" class=" list-unstyled">
+        <li>
+            <a href="#"><i class="fa fa-dashboard fa-lg fa-fw"></i> <span>Trang chủ</span></a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-user fa-lg fa-fw"></i> <span>Quản lý tài khoản</span></a>
+        </li>
+        <li class="has-dropdown">
+            <a href="javascript:void(0)"><i class="fa fa-shopping-cart fa-lg fa-fw"></i> <span>Quản lý bán hàng</span></a>
+            <ul class="list-unstyled dropdown">
+                <li><a href="#"><i class="fa fa-angle-double-right fa-fw"></i> <span>Quản lý đơn đặt hàng</span></a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right fa-fw"></i> <span>Quản lý đơn đặt hàng</span></a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right fa-fw"></i> <span>Quản lý đơn đặt hàng</span></a></li>
+            </ul>
+        </li>
+        <li class="has-dropdown">
+            <a href="javascript:void(0)"><i class="fa fa-shopping-cart fa-lg fa-fw"></i> <span>Quản lý bán hàng</span></a>
+            <ul class="list-unstyled dropdown">
+                <li><a href="#"><i class="fa fa-angle-double-right fa-fw"></i> <span>Quản lý đơn đặt hàng</span></a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right fa-fw"></i> <span>Quản lý đơn đặt hàng</span></a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right fa-fw"></i> <span>Quản lý đơn đặt hàng</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-left">
+                <h1>Trang chủ</h1>
+            </div>
+            <div class="pull-right">
+                <a href="#" class="btn btn-primary" title="Thêm mới">
+                    <i class="fa fa-plus"></i>
+                </a>
+                <button class="btn btn-danger" title="Xóa">
+                    <i class="fa fa-trash-o"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="well">
+            <div class="row">
+                <div class="col-sm-4">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Tìm theo tên">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-4">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="0">Tất cả danh mục</option>
+                                <option value="1">Máy tính Máy tính</option>
+                                <option value="2">Máy ảnh</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th><input type="checkbox"></th>
+                    <th>Id</th>
+                    <th>Tên</th>
+                    <th>Ảnh</th>
+                    <th>Thao tác</th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>1</td>
+                    <td>Máy ảnh Canon</td>
+                    <td><img src="assets/img/canon.jpg" class="img-thumbnail"></td>
+                    <td><a class="btn btn-primary" title="Sửa"><i class="fa fa-pencil"></i></a></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>1</td>
+                    <td>Máy ảnh Canon</td>
+                    <td><img src="assets/img/canon.jpg" class="img-thumbnail"></td>
+                    <td><a class="btn btn-primary" title="Sửa"><i class="fa fa-pencil"></i></a></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>1</td>
+                    <td>Máy ảnh Canon</td>
+                    <td><img src="assets/img/canon.jpg" class="img-thumbnail"></td>
+                    <td><a class="btn btn-primary" title="Sửa"><i class="fa fa-pencil"></i></a></td>
+                </tr>
+            </table>
+        </div>
+        <!-- pagination -->
+        <nav>
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!--/ pagination -->
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+- sản phẩm:
+	+ search tiếng việt
+	+ mặc định sale=price, lấy giá bán=sale
+	+ tinh chỉnh lại phần product, ajax load thuộc tính
+- tinh chỉnh các action delete

@@ -1,0 +1,147 @@
+body {
+    font-family: "Open Sans", "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+}
+a, a.active, a:hover, a:link, a:active {
+    text-decoration: none;
+}
+#login-box {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+#header {
+    border-radius: 0
+}
+#menu-button {
+    line-height: 50px;
+    padding-left: 5px;
+    padding-right: 20px;
+    border-right: 1px solid #E1E1E1;
+    display: inline-block;
+}
+#menu-logo {
+    margin-left: 0px;
+}
+#left-column {
+    position: absolute;
+    top: 52px;
+    left: 0;
+    width: 235px;
+    height: 100%;
+    background: #515151;
+    color: #c4c4c4;
+}
+#left-column>.logo {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#left-menu a {
+    color: #c4c4c4;
+    display: block;
+}
+#left-menu a:hover {
+    background: #444
+}
+#left-menu>li>a.active {
+    background: #373737
+}
+#left-menu .dropdown>li>a.active {
+    color: #fff;
+    padding-left: 30px;
+    background: #444
+}
+#left-menu>li {
+    margin: 0;
+    padding: 0;
+}
+#left-menu>li:first-child>a {
+    border-top: solid 1px #585858;
+}
+#left-menu>li>a {
+    line-height: 35px;
+    border-bottom: solid 1px #585858;
+    padding-bottom: 7px;
+    padding-left: 8px
+}
+#left-menu>li>a:after {
+    font-family: FontAwesome;
+    content: "\f105";
+    float: right;
+    margin-right: 10px;
+    position: relative;
+    top: 4px;
+}
+#left-menu a>span {
+    font-size: 15px;
+    position: relative;
+    top: 2px;
+    margin-left: 5px
+}
+#left-menu .dropdown {
+    display: none;
+}
+#left-menu .sub-menu {
+    padding-left: 20px;
+    padding-bottom: 5px;
+    line-height: 35px;
+    border-bottom: solid 1px #585858;
+}
+#left-menu .sub-menu>span {
+    font-size: 14px;
+}
+#content {
+    margin-left: 235px;
+    padding-left: 20px;
+}
+#content .page-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+#content table>tbody>tr:first-child {
+    background: #f5f5f5;
+}
+#content table>tbody>tr:first-child>th {
+    border-bottom: solid 2px #dbdbdb;
+}
+#content table td {vertical-align: middle}
+#content table tr>td:first-child, #content table tr>th:first-child {text-align: center}
+form .required>label:before {
+    content: '* ';
+    font-weight: bold;
+    color: #c9302c;
+}
+form #change-pass-label {
+    color: #448bc8;
+}
+form .error-message {
+    color: #c9302c;
+}
+.product-well>.row>div {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.product-thumbnail {
+    height: 50px;
+    padding: 4px;
+    border: solid 1px #ddd;
+    border-radius: 3px
+}
+.product-image {
+    height: 80px;
+    padding: 4px;
+    border: solid 1px #ddd;
+    border-radius: 3px
+}
+ul#images-list {
+    padding: 0px 15px
+}
+ul#images-list>li {
+    position: relative;
+    margin-bottom: 5px;
+}
+ul#images-list>li>button {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    z-index: 1000;
+}
