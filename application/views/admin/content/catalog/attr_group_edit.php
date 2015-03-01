@@ -23,8 +23,8 @@
                 <?= form_open('admin/attr_group/edit/'.$attr_group['id'], array('id'=>'main-form', 'class'=>'form-horizontal')); ?>
                     <input type="hidden" name="id" value="<?= $attr_group['id'] ?>">
                     <div class="form-group required">
-                        <label class="col-sm-3 control-label">Tên:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">Tên:</label>
+                        <div class="col-sm-9">
                             <input type="text" name="name" value="<?= $attr_group['name'] ?>" placeholder="Tên" class="form-control">
                             <?= form_error('name') ?>
                         </div>

@@ -22,36 +22,36 @@
             <div class="panel-body">
                 <?= form_open('admin/product/add_new', array('id'=>'main-form', 'class'=>'form-horizontal')); ?>
                 <div class="form-group required">
-                    <label class="col-sm-3 control-label">Tên sản phẩm:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Tên sản phẩm:</label>
+                    <div class="col-sm-9">
                         <input type="text" name="name" placeholder="Tên sản phẩm" class="form-control">
                         <?= form_error('name') ?>
                     </div>
                 </div>
                 <div class="form-group required">
-                    <label class="col-sm-3 control-label">Giá gốc:</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="price" placeholder="Giá gốc" class="form-control">
+                    <label class="col-sm-2 control-label">Giá bán:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="price" placeholder="Giá bán" class="form-control">
                         <?= form_error('price') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Giá khuyến mại:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Giá khuyến mại:</label>
+                    <div class="col-sm-9">
                         <input type="text" name="sale" placeholder="Để trống nếu không có khuyến mại" class="form-control">
                         <?= form_error('sale') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Số lượng:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Số lượng:</label>
+                    <div class="col-sm-9">
                         <input type="text" name="quantity" placeholder="Số lượng" class="form-control">
                         <?= form_error('quantity') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Thuộc danh mục:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Thuộc danh mục:</label>
+                    <div class="col-sm-9">
                         <select name="category_id" class="form-control">
                             <?php category_option($categories) ?>
                         </select>
@@ -59,34 +59,34 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Ảnh đại diện:</label>
+                    <label class="col-sm-2 control-label">Ảnh đại diện:</label>
                     <div class="col-sm-2">
                         <input id="add-thumbnail-btn" type="button" class="btn btn-sm btn-primary" value="Chọn ảnh">
                         <?= form_error('thumbnail') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-7">
+                    <div class="col-sm-offset-2 col-sm-9">
                         <img id="product-thumbnail" class="product-thumbnail" src="<?= BASE_URL ?>assets/img/no-img.png">
                         <input type="hidden" name="thumbnail" value="">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Ảnh sản phẩm:</label>
+                    <label class="col-sm-2 control-label">Ảnh sản phẩm:</label>
                     <div class="col-sm-2">
                         <input id="add-images-btn" type="button" class="btn btn-sm btn-primary" value="Thêm ảnh">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-3">
+                    <div class="col-sm-offset-2">
                         <ul class="list-inline" id="images-list">
 
                         </ul>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Trạng thái:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Trạng thái:</label>
+                    <div class="col-sm-9">
                         <select class="form-control" name="status">
                             <option value="0">Ẩn</option>
                             <option value="1" selected>Hiển thị</option>
@@ -95,30 +95,30 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Mô tả sản phẩm:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Mô tả sản phẩm:</label>
+                    <div class="col-sm-9">
                         <textarea id="editor" class="form-control" name="description" placeholder="Mô tả chi tiết sản phẩm"></textarea>
                         <?= form_error('description') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Thẻ tiêu đề (title):</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="tag_title" placeholder="Thẻ tiêu đề" class="form-control">
+                    <label class="col-sm-2 control-label">Thẻ tiêu đề:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="tag_title" placeholder="Title tag" class="form-control">
                         <?= form_error('tag_title') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Thẻ mô tả (meta description):</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="tag_title" placeholder="Thẻ mô tả" class="form-control">
+                    <label class="col-sm-2 control-label">Thẻ mô tả:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="tag_title" placeholder="Meta description" class="form-control">
                         <?= form_error('tag_description') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Thẻ từ khóa (meta keywords):</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="tag_keywords" placeholder="Thẻ từ khóa" class="form-control">
+                    <label class="col-sm-2 control-label">Thẻ từ khóa:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="tag_keywords" placeholder="Meta keywords" class="form-control">
                         <?= form_error('tag_keywords') ?>
                     </div>
                 </div>
@@ -128,10 +128,10 @@
                         <i class="fa fa-question"></i> Các thuộc tính phụ:
                     </label>
                 </div>
-                <div class="collapse" id="attribute-box">
+                <div class="collapse well" id="attribute-box">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label" for="old_password">Chọn nhóm thuộc tính:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-3 control-label" for="old_password">Nhóm thuộc tính:</label>
+                        <div class="col-sm-7">
                             <select id="attr-group-select" class="form-control">
                                 <option value="0">Chọn nhóm thuộc tính</option>
                                 <?php foreach ($attr_group as $item): ?>
@@ -141,7 +141,7 @@
                             <input id="token" type="hidden" name="token" value="<?= $this->security->get_csrf_hash() ?>">
                         </div>
                     </div>
-                    <div class="well" id="attr-box">
+                    <div class="" id="attr-box">
 
                     </div>
                 </div>
@@ -174,7 +174,7 @@
             window.KCFinder = {
                 callBack: function (url) {
                     window.KCFinder = null;
-                    img_item = "<li><img class='product-image' src='"+url+"'><button class='close' type='button'><span>×</span></button><input type='hidden' name='img[]' value='" + url + "'></li>";
+                    img_item = "<li><img class='product-image' src='"+url+"'><button class='close-button' type='button'><span>×</span></button><input type='hidden' name='img[]' value='" + url + "'></li>";
                     $("#images-list").append(img_item);
                 }
             };

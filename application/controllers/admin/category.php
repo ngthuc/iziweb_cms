@@ -70,7 +70,7 @@ class Category extends CI_Controller {
             if ($id == '') redirect('admin/category');
             $data_temp['content'] = array(
                 'category'=>$this->category_model->get_id($id),
-                'categories'=>$this->category_model->get('id!='.$id)
+                'categories'=>$this->category_model->get('id != '.$id)
             );
             $data['tag_title'] = 'Quản lý danh mục';
             $this->template->load_admin_view('catalog/category_edit', $data_temp, $data);
@@ -87,7 +87,7 @@ class Category extends CI_Controller {
 
     public function check_unique($name) {
         $category = $this->category_model->get_id($this->input->post('id'));
-        if ($name != $category['name'] && $this->category_model->count('name=\''.$name.'\'')) {
+        if ($name != $category['name'] && $this->category_model->count('name = \''.$name.'\'')) {
             $this->form_validation->set_message('check_unique', 'Danh mục đã tồn tại!');
             return false;
         }
@@ -99,6 +99,7 @@ class Category extends CI_Controller {
         if ($token != $this->security->get_csrf_hash()) show_404();
         else {
             $this->category_model->delete($id);
+            $this->product_model->delete_where("category_id = $id");
             redirect('admin/category');
         }
     }
@@ -109,6 +110,7 @@ class Category extends CI_Controller {
         if ($action == 'delete') {
             foreach ($this->input->post('check') as $key=>$value) {
                 $this->category_model->delete($key);
+                $this->product_model->delete_where("category_id = $key");
             }
             redirect('/admin/category');
         }

@@ -76,6 +76,7 @@ class Attr_group extends CI_Controller {
         if ($token != $this->security->get_csrf_hash()) show_404();
         else {
             $this->attr_group_model->delete($id);
+            $this->attribute_model->delete_where("attr_group_id = $id");
             redirect('admin/attr_group');
         }
     }
@@ -86,8 +87,9 @@ class Attr_group extends CI_Controller {
         if ($action == 'delete') {
             foreach ($this->input->post('check') as $key=>$value) {
                 $this->attr_group_model->delete($key);
+                $this->attribute_model->delete_where("attr_group_id = $key");
             }
-            redirect('/admin/attr_group');
+            redirect('admin/attr_group');
         }
     }
 }

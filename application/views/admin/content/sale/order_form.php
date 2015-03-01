@@ -22,8 +22,8 @@
             <div class="panel-body">
                 <?= form_open('admin/attr_group/add_new', array('id'=>'main-form', 'class'=>'form-horizontal')); ?>
                     <div class="form-group required">
-                        <label class="col-sm-3 control-label">Tên:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">Tên:</label>
+                        <div class="col-sm-9">
                             <input type="text" name="name" placeholder="Tên" class="form-control">
                             <?= form_error('name') ?>
                         </div>

@@ -8,6 +8,7 @@ class Login extends CI_Controller {
             redirect('admin');
         }
         $this->load->model('user_model');
+        $this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
     }
 
     public function index() {

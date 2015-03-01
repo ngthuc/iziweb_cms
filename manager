@@ -1,5 +1,11 @@
 - sản phẩm:
 	+ search tiếng việt
-	+ mặc định sale=price, lấy giá bán=sale
-	+ tinh chỉnh lại phần product, ajax load thuộc tính
+	+ mặc định sale=price, lấy giá bán=sale ===========> ok
+	+ tinh chỉnh lại phần product, ajax load thuộc tính ==============> ok
 - tinh chỉnh các action delete
+
+- status: xem lại
+    + order: 1=chưa thanh toán, 0=đã thanh toán
+    + user, customer: 0=chưa kích hoạt
+    + comment: 1=chưa đọc, 0=đã đọc
+- đã kiểm tra về cơ bản hết phần sản phẩm

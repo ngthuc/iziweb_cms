@@ -64,4 +64,10 @@ class Base_model extends CI_Model {
     	$this->db->where('id', $id);
         return $this->db->delete($this->table_name);
     }
+
+    public function delete_where($where = '') {
+        if ($where == '') return false;
+        $this->db->where($where);
+        return $this->db->delete($this->table_name);
+    }
 }

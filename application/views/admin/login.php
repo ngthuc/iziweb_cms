@@ -41,24 +41,24 @@
                 </h1>
             </div>
             <div class="panel-body">
-                <?php echo validation_errors(); ?>
                 <?php echo form_open('/admin/login'); ?>
-                    <div class="form-group">
-                        <label for="input-username">Tên đăng nhập:</label>
-                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input type="text" name="username" placeholder="Tên đăng nhập" id="input-username" class="form-control" required>
-                        </div>
+                <?php echo validation_errors(); ?>
+                <div class="form-group">
+                    <label for="input-username">Tên đăng nhập:</label>
+                    <div class="input-group"><span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" name="username" placeholder="Tên đăng nhập" id="input-username" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="input-password">Mật khẩu:</label>
-                        <div class="input-group"><span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input type="password" name="password" value="" placeholder="Mật khẩu" id="input-password" class="form-control" required>
-                        </div>
-                        <span class="help-block"><a href="<?= BASE_URL ?>admin/login/reset_password">Quên mật khẩu</a></span>
+                </div>
+                <div class="form-group">
+                    <label for="input-password">Mật khẩu:</label>
+                    <div class="input-group"><span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" name="password" value="" placeholder="Mật khẩu" id="input-password" class="form-control" required>
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                    </div>
+                    <span class="help-block"><a href="<?= BASE_URL ?>admin/login/reset_password">Quên mật khẩu</a></span>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </div>
                 </form>
             </div>
         </div>
@@ -75,6 +75,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?= BASE_URL ?>assets/js/bootstrap.min.js"></script>
-<script src="<?= BASE_URL ?>assets/js/main.js"></script>
 </body>
 </html>

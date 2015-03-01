@@ -10,6 +10,7 @@
     <link href="<?= BASE_URL ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= BASE_URL ?>assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?= BASE_URL ?>assets/css/style.css" rel="stylesheet">
+    <link href="<?= BASE_URL ?>assets/css/date-picker.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,6 +36,7 @@
 <script src="<?= BASE_URL ?>assets/js/bootstrap.min.js"></script>
 <script src="<?= BASE_URL ?>assets/plugin/ckeditor/ckeditor.js"></script>
 <script src="<?= BASE_URL ?>assets/js/main.js"></script>
+<script src="<?= BASE_URL ?>assets/js/date-picker.js"></script>
 
 </body>
 </html>

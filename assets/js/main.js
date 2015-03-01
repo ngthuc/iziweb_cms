@@ -15,6 +15,11 @@ $(document).ready(function() {
         }
     });
 
+    // set full height of left column
+    if ($("#left-column").css("height") < $("#content").css("height")) {
+        $("#left-column").css("height", $("#content").css("height"));
+    }
+
     // drop down menu
     $(".has-dropdown").click(function() {
 
@@ -52,6 +57,7 @@ $(document).ready(function() {
 
     // tool tip
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
+        $(".date-picker").datepicker({format: 'yyyy-mm-dd'});
+        $('[data-toggle="tooltip"]').tooltip();
     });
 });

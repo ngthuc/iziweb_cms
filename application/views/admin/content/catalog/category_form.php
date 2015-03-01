@@ -22,22 +22,22 @@
             <div class="panel-body">
                 <?= form_open('admin/category/add_new', array('id'=>'main-form', 'class'=>'form-horizontal')); ?>
                     <div class="form-group required">
-                        <label class="col-sm-3 control-label">Tên:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">Tên:</label>
+                        <div class="col-sm-9">
                             <input type="text" name="name" placeholder="Tên" class="form-control">
                             <?= form_error('name') ?>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Đường dẫn:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">Đường dẫn:</label>
+                        <div class="col-sm-9">
                             <input type="text" name="slug" placeholder="Để trống nếu muốn mặc định" class="form-control">
                             <?= form_error('slug') ?>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Danh mục cha:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label">Danh mục cha:</label>
+                        <div class="col-sm-9">
                             <select name="parent_id" class="form-control">
                                 <option value="0">Không có</option>
                                 <?php category_option($categories) ?>
@@ -45,29 +45,29 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Thẻ tiêu đề (title):</label>
-                        <div class="col-sm-8">
-                            <input type="text" name="tag_title" placeholder="Thẻ tiêu đề" class="form-control">
+                        <label class="col-sm-2 control-label">Thẻ tiêu đề:</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="tag_title" placeholder="Title tag" class="form-control">
                             <?= form_error('tag_title') ?>
                         </div>
                     </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="input-confirm">Thẻ mô tả (meta description):</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="tag_title" placeholder="Thẻ mô tả" class="form-control">
+                    <label class="col-sm-2 control-label" for="input-confirm">Thẻ mô tả:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="tag_title" placeholder="Meta description" class="form-control">
                         <?= form_error('tag_description') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Thẻ từ khóa (meta keywords):</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="tag_keywords" placeholder="Thẻ từ khóa" class="form-control">
+                    <label class="col-sm-2 control-label">Thẻ từ khóa:</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="tag_keywords" placeholder="Meta keywords" class="form-control">
                         <?= form_error('tag_keywords') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Trạng thái:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Trạng thái:</label>
+                    <div class="col-sm-9">
                         <select name="status" class="form-control">
                             <option value="0">Ẩn</option>
                             <option value="1" selected>Hiển thị</option>

@@ -50,6 +50,11 @@ $route['admin/attribute/attr_group/(:num)'] = "admin/attribute/index/$1";
 $route['admin/attribute/page/(:num)'] = "admin/attribute/index/0/$1";
 $route['admin/attribute/attr_group/(:num)/page/(:num)'] = "admin/attribute/index/$1/$2";
 
+$route['admin/post/topic/(:num)'] = "admin/post/index/$1";
+$route['admin/post/page/(:num)'] = "admin/post/index/0/$1";
+$route['admin/post/topic/(:num)/page/(:num)'] = "admin/post/index/$1/$2";
+$route['admin/post/search/(:any)/page/(:num)'] = "admin/post/search/$1/$2";
+
 $route['admin/([a-zA-Z]+)/page/(:num)'] = "admin/$1/index/$2";
 $route['404_override'] = '';
 

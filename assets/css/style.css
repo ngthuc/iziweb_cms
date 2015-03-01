@@ -22,6 +22,9 @@ a, a.active, a:hover, a:link, a:active {
 #menu-logo {
     margin-left: 0px;
 }
+#header .navbar-right>li {
+    border-left: solid 1px #e7e7e7
+}
 #left-column {
     position: absolute;
     top: 52px;
@@ -75,7 +78,7 @@ a, a.active, a:hover, a:link, a:active {
     font-size: 15px;
     position: relative;
     top: 2px;
-    margin-left: 5px
+    margin-left: 10px
 }
 #left-menu .dropdown {
     display: none;
@@ -121,7 +124,7 @@ form .error-message {
     margin-bottom: 15px;
 }
 .product-thumbnail {
-    height: 50px;
+    height: 80px;
     padding: 4px;
     border: solid 1px #ddd;
     border-radius: 3px
@@ -141,7 +144,50 @@ ul#images-list>li {
 }
 ul#images-list>li>button {
     position: absolute;
-    top: -5px;
-    right: 5px;
+    top: -10px;
+    right: -5px;
     z-index: 1000;
+    border: solid 1px #d1d1d1;
+    background: #fdfdfd;
+    border-radius: 50%;
+    color: #000
+}
+ul#images-list>li>button:hover {
+    background: #efefef;
+}
+.statistic {
+
+}
+.statistic-box {
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+.statistic-box>.box-header {
+    background: #1E91CF;
+    padding: 7px 5%
+}
+.statistic-box>.box-content {
+    background: #279FE0;
+    padding: 10px 5%
+}
+.statistic-box>.box-content>i {
+    color: #CCE9F8
+}
+.statistic-box>.box-content>i:hover {
+    color: #fff
+}
+.statistic-box>.box-content>.pull-right {
+    font-size: 2em;
+}
+.statistic-box>.box-footer {
+    background: #3DA9E3;
+    padding: 5px 5%;
+    min-height: 28px
+}
+.statistic-box>.box-footer>a {
+    color: #CCE9F8
+}
+.statistic-box>.box-footer>a:hover {
+    color: #fff
 }

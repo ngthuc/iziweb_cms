@@ -57,6 +57,7 @@ class Product extends CI_Controller {
 
     public function add_new() {
         $this->form_validation->set_rules('name', 'Tên', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('price', 'Giá', 'trim|required|xss_clean');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -70,6 +71,7 @@ class Product extends CI_Controller {
         else {
             // add new
             $post_array = $this->input->post();
+            if ($post_array['sale'] == '') $post_array['sale'] = $post_array['price'];
             if (isset($post_array['img'])) {
                 $img = $post_array['img'];
                 unset($post_array['img']);
@@ -95,7 +97,7 @@ class Product extends CI_Controller {
     }
 
     public function ajax_get_attr() {
-        $attributes = $this->attribute_model->get('attr_group_id='.$this->input->post('attr_group_id'));
+        $attributes = $this->attribute_model->get('attr_group_id = '.$this->input->post('attr_group_id'));
         foreach ($attributes as $item) {
             echo $this->attr_form($item);
         }
@@ -105,14 +107,15 @@ class Product extends CI_Controller {
         return
         '<div class="form-group">
             <label class="col-sm-3 control-label">'.$attr['name'].':</label>
-            <div class="col-sm-8">
-                <input type="text" name="attr['.$attr['id'].']" placeholder="'.$attr['name'].'" class="form-control">
+            <div class="col-sm-7">
+                <input type="text" name="attr['.$attr['id'].']" placeholder="'.$attr['name'].'" value="'.$attr['default_value'].'" class="form-control">
             </div>
         </div>';
     }
 
     public function edit($id = '') {
         $this->form_validation->set_rules('name', 'Tên', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('price', 'Giá', 'trim|required|xss_clean');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -131,6 +134,7 @@ class Product extends CI_Controller {
         else {
             // submit editing
             $post_array = $this->input->post();
+            if ($post_array['sale'] == '') $post_array['sale'] = $post_array['price'];
             if (isset($post_array['img'])) {
                 $img = $post_array['img'];
                 unset($post_array['img']);
@@ -161,8 +165,8 @@ class Product extends CI_Controller {
         if ($token != $this->security->get_csrf_hash()) show_404();
         else {
             $this->product_model->delete($id);
-            $this->product_attr_model->delete_product_id($id);
-            $this->product_img_model->delete_product_id($id);
+            $this->product_attr_model->delete_product_attr($id);
+            $this->product_img_model->delete_product_img($id);
             redirect('admin/product');
         }
     }
@@ -173,10 +177,10 @@ class Product extends CI_Controller {
         if ($action == 'delete') {
             foreach ($this->input->post('check') as $key=>$value) {
                 $this->product_model->delete($key);
-                $this->product_attr_model->delete_product_id($key);
-                $this->product_img_model->delete_product_id($key);
+                $this->product_attr_model->delete_product_attr($key);
+                $this->product_img_model->delete_product_img($key);
             }
-            redirect('/admin/product');
+            redirect('admin/product');
         }
     }
 }

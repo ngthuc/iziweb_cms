@@ -22,29 +22,29 @@
             <div class="panel-body">
                 <?= form_open('admin/user/add_new', array('id'=>'main-form', 'class'=>'form-horizontal')); ?>
                     <div class="form-group required">
-                        <label class="col-sm-3 control-label" for="input-username">Username:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label" for="input-username">Username:</label>
+                        <div class="col-sm-9">
                             <input type="text" name="username" placeholder="Username" id="input-username" class="form-control">
                             <?= form_error('username') ?>
                         </div>
                     </div>
                     <div class="form-group required">
-                        <label class="col-sm-3 control-label" for="input-email">Email:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label" for="input-email">Email:</label>
+                        <div class="col-sm-9">
                             <input type="email" name="email" placeholder="Email" id="input-email" class="form-control">
                             <?= form_error('email') ?>
                         </div>
                     </div>
                     <div class="form-group required">
-                        <label class="col-sm-3 control-label" for="input-password">Mật khẩu:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label" for="input-password">Mật khẩu:</label>
+                        <div class="col-sm-9">
                             <input type="password" name="password" placeholder="Mật khẩu" id="input-password" class="form-control" autocomplete="off">
                             <?= form_error('password') ?>
                         </div>
                     </div>
                     <div class="form-group required">
-                        <label class="col-sm-3 control-label" for="input-confirm">Nhập lại mật khẩu:</label>
-                        <div class="col-sm-8">
+                        <label class="col-sm-2 control-label" for="input-confirm">Nhập lại mật khẩu:</label>
+                        <div class="col-sm-9">
                             <input type="password" name="confirm" placeholder="Nhập lại mật khẩu" id="input-confirm" class="form-control">
                             <?= form_error('confirm') ?>
                         </div>

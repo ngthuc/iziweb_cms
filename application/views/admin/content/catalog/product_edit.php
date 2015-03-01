@@ -23,36 +23,36 @@
                 <?= form_open('admin/product/edit', array('id'=>'main-form', 'class'=>'form-horizontal')); ?>
                 <input type="hidden" name="id" value="<?= $product['id'] ?>">
                 <div class="form-group required">
-                    <label class="col-sm-3 control-label">Tên sản phẩm:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Tên sản phẩm:</label>
+                    <div class="col-sm-9">
                         <input value="<?= $product['name'] ?>" type="text" name="name" placeholder="Tên sản phẩm" class="form-control">
                         <?= form_error('name') ?>
                     </div>
                 </div>
                 <div class="form-group required">
-                    <label class="col-sm-3 control-label">Giá gốc:</label>
-                    <div class="col-sm-8">
-                        <input value="<?= $product['price'] ?>" type="text" name="price" placeholder="Giá gốc" class="form-control">
+                    <label class="col-sm-2 control-label">Giá bán:</label>
+                    <div class="col-sm-9">
+                        <input value="<?= $product['price'] ?>" type="text" name="price" placeholder="Giá bán" class="form-control">
                         <?= form_error('price') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Giá khuyến mại:</label>
-                    <div class="col-sm-8">
-                        <input value="<?= $product['sale'] ?>" type="text" name="sale" placeholder="Để trống nếu không có khuyến mại" class="form-control">
+                    <label class="col-sm-2 control-label">Giá khuyến mại:</label>
+                    <div class="col-sm-9">
+                        <input value="<?= $product['sale']==$product['price']?'':$product['sale'] ?>" type="text" name="sale" placeholder="Để trống nếu không có khuyến mại" class="form-control">
                         <?= form_error('sale') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Số lượng:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Số lượng:</label>
+                    <div class="col-sm-9">
                         <input value="<?= $product['quantity'] ?>" type="text" name="quantity" placeholder="Số lượng" class="form-control">
                         <?= form_error('quantity') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Thuộc danh mục:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Thuộc danh mục:</label>
+                    <div class="col-sm-9">
                         <select name="category_id" class="form-control">
                             <?php category_option($categories, $product['category_id']) ?>
                         </select>
@@ -60,31 +60,31 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Ảnh đại diện:</label>
+                    <label class="col-sm-2 control-label">Ảnh đại diện:</label>
                     <div class="col-sm-2">
                         <input id="add-thumbnail-btn" type="button" class="btn btn-sm btn-primary" value="Chọn ảnh">
                         <?= form_error('category_id') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-7">
+                    <div class="col-sm-offset-2 col-sm-9">
                         <img id="product-thumbnail" class="product-thumbnail" src="<?= $product['thumbnail'] != null?$product['thumbnail']:BASE_URL.'assets/img/no-img.png' ?>">
                         <input type="hidden" name="thumbnail" value="<?= $product['thumbnail'] ?>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Ảnh sản phẩm:</label>
+                    <label class="col-sm-2 control-label">Ảnh sản phẩm:</label>
                     <div class="col-sm-2">
                         <input id="add-images-btn" type="button" class="btn btn-sm btn-primary" value="Thêm ảnh">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-3">
+                    <div class="col-sm-offset-2">
                         <ul class="list-inline" id="images-list">
                             <?php if (!empty($product_img)): foreach ($product_img as $item): ?>
                                 <li>
                                     <img class="product-image" src="<?= $item['path'] ?>">
-                                    <button class="close" type="button"><span>×</span></button>
+                                    <button type="button"><span>×</span></button>
                                     <input type="hidden" name="img[]" value="<?= $item['path'] ?>">
                                 </li>
                             <?php endforeach; endif; ?>
@@ -92,8 +92,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Trạng thái:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Trạng thái:</label>
+                    <div class="col-sm-9">
                         <select class="form-control" name="status">
                             <?php if ($product['status'] == 1): ?>
                                 <option value="0">Ẩn</option>
@@ -107,30 +107,30 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Mô tả sản phẩm:</label>
-                    <div class="col-sm-8">
+                    <label class="col-sm-2 control-label">Mô tả sản phẩm:</label>
+                    <div class="col-sm-9">
                         <textarea id="editor" class="form-control" name="description" placeholder="Mô tả chi tiết sản phẩm"><?= $product['description'] ?></textarea>
                         <?= form_error('description') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Thẻ tiêu đề (title):</label>
-                    <div class="col-sm-8">
-                        <input value="<?= $product['tag_title'] ?>" type="text" name="tag_title" placeholder="Thẻ tiêu đề" class="form-control">
+                    <label class="col-sm-2 control-label">Thẻ tiêu đề:</label>
+                    <div class="col-sm-9">
+                        <input value="<?= $product['tag_title'] ?>" type="text" name="tag_title" placeholder="Title tag" class="form-control">
                         <?= form_error('tag_title') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Thẻ mô tả (meta description):</label>
-                    <div class="col-sm-8">
-                        <input value="<?= $product['tag_description'] ?>" type="text" name="tag_title" placeholder="Thẻ mô tả" class="form-control">
+                    <label class="col-sm-2 control-label">Thẻ mô tả:</label>
+                    <div class="col-sm-9">
+                        <input value="<?= $product['tag_description'] ?>" type="text" name="tag_title" placeholder="Meta description" class="form-control">
                         <?= form_error('tag_description') ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Thẻ từ khóa (meta keywords):</label>
-                    <div class="col-sm-8">
-                        <input value="<?= $product['tag_keywords'] ?>" type="text" name="tag_keywords" placeholder="Thẻ từ khóa" class="form-control">
+                    <label class="col-sm-2 control-label">Thẻ từ khóa:</label>
+                    <div class="col-sm-9">
+                        <input value="<?= $product['tag_keywords'] ?>" type="text" name="tag_keywords" placeholder="Meta keywords" class="form-control">
                         <?= form_error('tag_keywords') ?>
                     </div>
                 </div>
@@ -138,9 +138,9 @@
                 <?php if (!empty($product_attr)): ?>
                     <?php foreach ($product_attr as $item): ?>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label"><?= $item['name'] ?>:</label>
-                            <div class="col-sm-8">
-                                <input value="<?= $item['value'] ?>" type="text" name="attr[<?= $item['id'] ?>]" placeholder="<?= $item['name'] ?>" class="form-control">
+                            <label class="col-sm-2 control-label"><?= $item['attr_name'] ?>:</label>
+                            <div class="col-sm-9">
+                                <input value="<?= $item['value'] ?>" type="text" name="attr[<?= $item['id'] ?>]" placeholder="<?= $item['attr_name'] ?>" class="form-control">
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -175,7 +175,7 @@
             window.KCFinder = {
                 callBack: function (url) {
                     window.KCFinder = null;
-                    img_item = "<li><img class='product-image' src='"+url+"'><button class='close' type='button'><span>×</span></button><input type='hidden' name='img[]' value='" + url + "'></li>";
+                    img_item = "<li><img class='product-image' src='"+url+"'><button type='button'><span>×</span></button><input type='hidden' name='img[]' value='" + url + "'></li>";
                     $("#images-list").append(img_item);
                 }
             };
