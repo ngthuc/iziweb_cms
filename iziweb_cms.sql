@@ -1,0 +1,458 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 02, 2015 at 03:02 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `iziweb_cms`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_attribute`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_attribute` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `default_value` varchar(255) NOT NULL,
+  `attr_group_id` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `izi_attribute`
+--
+
+INSERT INTO `izi_attribute` (`id`, `name`, `default_value`, `attr_group_id`) VALUES
+(1, 'Kích thước màn hình', '', 3),
+(2, 'Card đồ họa', '', 3),
+(3, 'Loại bàn phím', '', 3),
+(4, 'Khối lượng', '', 3),
+(5, 'Ngày phát hành', '', 2),
+(6, 'Ngày sản xuất', '', 2),
+(7, 'Tác giả', 'Khuyết danh', 2),
+(8, 'Ngày xuất bản', '', 2),
+(9, 'Size', '', 1),
+(10, 'Màu sắc', '', 1),
+(11, 'Chất liệu vải', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_attr_group`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_attr_group` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `izi_attr_group`
+--
+
+INSERT INTO `izi_attr_group` (`id`, `name`) VALUES
+(1, 'Thời trang'),
+(2, 'Sách'),
+(3, 'Máy tính'),
+(4, 'Nội thất');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_category`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `show_in_menu` tinyint(1) NOT NULL DEFAULT '1',
+  `sort_order` int(11) NOT NULL DEFAULT '0',
+  `parent_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `tag_title` varchar(255) NOT NULL,
+  `tag_description` text NOT NULL,
+  `tag_keywords` text NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `izi_category`
+--
+
+INSERT INTO `izi_category` (`id`, `name`, `slug`, `show_in_menu`, `sort_order`, `parent_id`, `tag_title`, `tag_description`, `tag_keywords`, `status`) VALUES
+(1, 'Thời trang', 'thoi-trang', 0, 1, 0, '', '', '', 1),
+(2, 'Dien tu', 'dien-tu', 1, 2, 0, 'thoi trang', 'thoi trang', 'thoi trang', 1),
+(3, 'Nội thất', 'noi-that', 1, 3, 0, 'Nội thất', 'Nội thất', 'Nội thất', 1),
+(4, 'Quần', '', 1, 0, 1, '', '', '', 1),
+(5, 'Áo', 'ao', 1, 0, 1, '', '', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_comment`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `comment_time` datetime NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `content` text,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `izi_comment`
+--
+
+INSERT INTO `izi_comment` (`id`, `product_id`, `comment_time`, `username`, `email`, `content`, `status`) VALUES
+(1, 1, '2015-02-09 00:00:00', 'nhan say', 'nhansay@gmail.com', 'San pham nay tot vuot tren mong doi', 0),
+(2, 1, '2015-02-28 18:23:40', 'xxx', 'xxx', 'xxxx', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_config`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_config` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `key` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_customer`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_customer` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `password` varchar(64) NOT NULL DEFAULT '',
+  `email` varchar(255) DEFAULT NULL,
+  `full_name` varchar(255) NOT NULL DEFAULT '',
+  `address` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `izi_customer`
+--
+
+INSERT INTO `izi_customer` (`id`, `username`, `password`, `email`, `full_name`, `address`, `phone`, `status`) VALUES
+(1, 'kh1', '021fe13b92c973486e1024fad211785f', NULL, 'xxx', NULL, NULL, 0),
+(2, 'kh2', '03063630e16af1b6a633db313db0c9f1', NULL, 'yyy', NULL, NULL, 0),
+(3, 'dfdfd', 'c6f057b86584942e415435ffb1fa93d4', 'dfdf@gmail.com', 'dfdf', 'fadfa', 'fdfafa', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_online`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_online` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `session` varchar(255) DEFAULT NULL,
+  `on_time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_order`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_order` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_time` datetime NOT NULL,
+  `amount` decimal(15,0) NOT NULL DEFAULT '0',
+  `order_info` text NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `customer_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `status` smallint(6) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `izi_order`
+--
+
+INSERT INTO `izi_order` (`id`, `order_time`, `amount`, `order_info`, `full_name`, `email`, `address`, `phone`, `customer_id`, `status`) VALUES
+(1, '2015-01-15 00:00:00', '40000000', 'thong tin them', 'Member Normal', 'membernormal@gmail.com', 'Ha Noi ', '0125468754', 2, 1),
+(2, '2015-01-08 00:00:00', '20000000', 'user info', 'Admin', 'admin@gmail.com', 'Ha Noi - Viet Nam', '01234567890', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_post`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_post` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` text,
+  `post_date` date DEFAULT NULL,
+  `author` varchar(255) DEFAULT NULL,
+  `thumbnail` varchar(255) DEFAULT NULL,
+  `excerpt` text,
+  `content` text,
+  `post_type` varchar(20) DEFAULT NULL,
+  `tag_title` varchar(255) DEFAULT NULL,
+  `tag_description` varchar(255) DEFAULT NULL,
+  `tag_keywords` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  `views` int(10) unsigned NOT NULL,
+  `topic_id` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `izi_post`
+--
+
+INSERT INTO `izi_post` (`id`, `title`, `post_date`, `author`, `thumbnail`, `excerpt`, `content`, `post_type`, `tag_title`, `tag_description`, `tag_keywords`, `status`, `views`, `topic_id`) VALUES
+(1, 'Giới thiệu chúng tôi', '2015-02-02', NULL, '/iziweb_cms/assets/plugin/kcfinder/upload/images/4.jpg', 'Giới thiệu trung tâm', '<p>Nội dung b&agrave;i giới thiệu</p>\r\n', 'page', '', NULL, '', 1, 0, 1),
+(2, 'Liên hệ', '2015-02-09', NULL, NULL, 'Tóm tắt phần liên hệ', 'Nội dung phần liên hệ', 'page', NULL, NULL, NULL, 1, 0, 2),
+(3, 'fdfdfdf', '0000-00-00', NULL, '', '', '', 'page', '', NULL, '', 1, 0, 2),
+(4, 'Tin tuc ngay hom nay', '2015-02-03', NULL, NULL, 'xxx', 'yyy', 'post', NULL, NULL, NULL, 1, 0, 1),
+(5, 'Bí quyết bán hàng dịp tết', '2015-02-19', 'Tác giả', '/iziweb_cms/assets/plugin/kcfinder/upload/images/24723_0_vostro_5470.jpg', 'Tóm tắt nội dung', '<p>Nội dung chi tiết abc&nbsp;Nội dung chi tiế<strong>t abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi ti</strong>ết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc&nbsp;Nội dung chi tiết abc</p>\r\n', 'post', '', NULL, '', 1, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_post_tag`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_post_tag` (
+  `post_id` int(10) unsigned DEFAULT NULL,
+  `tag_id` int(10) unsigned DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_product`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_product` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `model` int(11) NOT NULL,
+  `price` decimal(15,0) unsigned NOT NULL,
+  `sale` decimal(15,0) unsigned NOT NULL,
+  `thumbnail` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `description` text NOT NULL,
+  `views` int(11) NOT NULL DEFAULT '1',
+  `sort_order` int(11) NOT NULL DEFAULT '0',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `tag_title` varchar(255) NOT NULL,
+  `tag_description` text NOT NULL,
+  `tag_keywords` varchar(255) NOT NULL,
+  `category_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+
+--
+-- Dumping data for table `izi_product`
+--
+
+INSERT INTO `izi_product` (`id`, `name`, `model`, `price`, `sale`, `thumbnail`, `quantity`, `description`, `views`, `sort_order`, `status`, `tag_title`, `tag_description`, `tag_keywords`, `category_id`) VALUES
+(1, 'PC Dell Vostro', 0, '15000000', '2000000', '/ci_admin/asset/plugin/kcfinder/upload/images/computer3.jpg', 30, '<p>may tinh de ban</p>\r\n', 1, 0, 1, '', '', '', 1),
+(12, 'sp xoas', 0, '27599000', '2000000', '/ci_admin/asset/plugin/kcfinder/upload/images/computer2.jpg', 34, '<p>sdfasdf</p>\r\n', 1, 0, 1, '', '', '', 1),
+(13, 'new product', 0, '100000000', '2000000', '/ci_admin/asset/plugin/kcfinder/upload/images/Q-0b0e5.jpg', 3, '<p>ban ghe noi that</p>\r\n', 1, 0, 1, '', '', '', 1),
+(15, 'them moi', 0, '15000000', '45', '/ci_admin/asset/plugin/kcfinder/upload/images/example-slide-3.jpg', 34, '<p>sfsdf</p>\r\n', 1, 0, 1, '', '', '', 1),
+(16, 'Máy tính thương hiệu SunPower SUNL007', 0, '27599000', '45678', '/ci_admin/asset/plugin/kcfinder/upload/images/250_26011_hncb0123.png', 56, '<p>ferwer</p>\r\n', 1, 0, 1, '', '', '', 1),
+(17, 'test san pham', 0, '100000', '0', '/iziweb_cms/assets/plugin/kcfinder/upload/images/computer1.jpg', 0, '', 1, 0, 1, '', '', '', 1),
+(18, 'abc', 0, '999', '0', '/iziweb_cms/assets/plugin/kcfinder/upload/images/avata1.jpg', 0, '', 1, 0, 1, '', '', '', 1),
+(19, 'dfd', 0, '999', '0', '', 0, '', 1, 0, 1, '', '', '', 1),
+(20, 'Máy tính bảng Ipad', 0, '9000000', '999', '/iziweb_cms/assets/plugin/kcfinder/upload/images/computer1.jpg', 20, '<p>M&ocirc; tả sản cm phẩm</p>\r\n', 1, 0, 1, '', '', '', 4),
+(23, 'test san pham', 0, '60000', '60000', '/iziweb_cms/assets/plugin/kcfinder/upload/images/1.jpg', 20, '<p>M&ocirc; tả sản phẩm xyz</p>\r\n', 1, 0, 1, '', '', '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_product_attr`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_product_attr` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `attr_id` int(11) NOT NULL,
+  `value` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+
+--
+-- Dumping data for table `izi_product_attr`
+--
+
+INSERT INTO `izi_product_attr` (`id`, `product_id`, `attr_id`, `value`) VALUES
+(1, 4, 3, '1'),
+(2, 4, 4, 'AMD 2G'),
+(3, 4, 5, 'Bàn phím số'),
+(4, 4, 6, '3 Kg'),
+(11, 19, 3, '99'),
+(12, 19, 4, 'vga 2g'),
+(13, 19, 5, 'lotex'),
+(14, 19, 6, '9kg'),
+(15, 20, 3, '14'''),
+(16, 20, 4, 'VGA 2G'),
+(17, 20, 5, 'Lotus'),
+(18, 20, 6, '9kg'),
+(23, 23, 1, '2GB'),
+(24, 23, 2, '300GB'),
+(25, 23, 13, 'Canon');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_product_img`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_product_img` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
+
+--
+-- Dumping data for table `izi_product_img`
+--
+
+INSERT INTO `izi_product_img` (`id`, `product_id`, `path`) VALUES
+(40, 18, '/iziweb_cms/assets/plugin/kcfinder/upload/images/24723_0_vostro_5470.jpg'),
+(41, 18, '/iziweb_cms/assets/plugin/kcfinder/upload/images/250_26011_hncb0123.png'),
+(44, 0, '/iziweb_cms/assets/plugin/kcfinder/upload/images/24723_0_vostro_5470.jpg'),
+(45, 0, '/iziweb_cms/assets/plugin/kcfinder/upload/images/computer4.jpg'),
+(46, 0, '/iziweb_cms/assets/plugin/kcfinder/upload/images/250_26011_hncb0123.png'),
+(47, 0, '/iziweb_cms/assets/plugin/kcfinder/upload/images/250_26011_hncb0123.png'),
+(48, 0, '/iziweb_cms/assets/plugin/kcfinder/upload/images/24723_0_vostro_5470.jpg'),
+(59, 23, '/iziweb_cms/assets/plugin/kcfinder/upload/images/1.jpg'),
+(60, 23, '/iziweb_cms/assets/plugin/kcfinder/upload/images/2.jpg'),
+(61, 23, '/iziweb_cms/assets/plugin/kcfinder/upload/images/3(1).jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_product_order`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_product_order` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `unit_price` decimal(15,4) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `total` decimal(15,4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `izi_product_order`
+--
+
+INSERT INTO `izi_product_order` (`id`, `order_id`, `product_id`, `unit_price`, `quantity`, `total`) VALUES
+(1, 1, 15, '15000000.0000', 3, '45000000.0000'),
+(2, 1, 16, '200000.0000', 5, '1000000.0000'),
+(3, 2, 15, '90000.0000', 3, '270000.0000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_tag`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_tag` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `count_used` int(10) unsigned DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_topic`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_topic` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `parent_id` int(10) unsigned DEFAULT '0',
+  `tag_title` varchar(255) DEFAULT NULL,
+  `tag_description` varchar(255) DEFAULT NULL,
+  `tag_keywords` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `izi_topic`
+--
+
+INSERT INTO `izi_topic` (`id`, `name`, `slug`, `parent_id`, `tag_title`, `tag_description`, `tag_keywords`, `status`) VALUES
+(1, 'Tin tức', 'tin-tuc', 0, 'tin tuc', 'tin tuc', 'tin tuc', 1),
+(2, 'Sự kiện văn hóa', 'su-kien-van-hoa', 0, 'su kien', 'su kien', 'su kien', 1),
+(3, 'Tin trong nước', 'tin-trong-nuoc', 1, 'tin trong nuoc', 'tin trong nuoc', 'tin trong nuoc', 1),
+(4, 'Tin quốc tế', 'tin-quoc-te', 1, '', '', '', 1),
+(5, 'Tin Hà Nội', 'tin-ha-noi', 3, '', NULL, '', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `izi_user`
+--
+
+CREATE TABLE IF NOT EXISTS `izi_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `izi_user`
+--
+
+INSERT INTO `izi_user` (`id`, `username`, `password`, `email`, `role`) VALUES
+(3, 'admin', '47bce5c74f589f4867dbd57e9ca9f808', 'nhansay@gmail.com', 0),
+(4, 'superadmin', 'b706835de79a2b4e80506f582af3676a', 'superadmin@gmail.com', 0);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
