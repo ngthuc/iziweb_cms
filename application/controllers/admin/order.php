@@ -59,6 +59,7 @@ class Order extends CI_Controller {
         if ($token != $this->security->get_csrf_hash()) show_404();
         else {
             $this->order_model->delete($id);
+            $this->product_order_model->delete_where("order_id = $id");
             redirect('admin/order');
         }
     }
@@ -69,6 +70,7 @@ class Order extends CI_Controller {
         if ($action == 'delete') {
             foreach ($this->input->post('check') as $key=>$value) {
                 $this->order_model->delete($key);
+                $this->product_order_model->delete_where("order_id = $key");
             }
             redirect('/admin/order');
         }

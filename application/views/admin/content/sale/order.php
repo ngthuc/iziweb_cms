@@ -42,7 +42,7 @@
                                 </a>
                                 <?php if ($item['status'] == 1): ?>
                                     <a data-toggle="tooltip" data-placement="top" class="btn btn-sm btn-success" title="Đã thanh toán"
-                                    href="<?= BASE_URL ?>admin/order/check_out/<?= $item['id'].'/'.$this->security->get_csrf_hash() ?>">
+                                        href="<?= BASE_URL ?>admin/order/check_out/<?= $item['id'].'/'.$this->security->get_csrf_hash() ?>">
                                         <i class="fa fa-check"></i>
                                     </a>
                                 <?php endif; ?>

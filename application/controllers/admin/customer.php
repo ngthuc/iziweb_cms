@@ -63,7 +63,7 @@ class Customer extends CI_Controller {
         {
             if ($id == '') redirect('admin/customer');
             $data_temp['content'] = array(
-                'user'=>$this->customer_model->get_id($id)
+                'customer'=>$this->customer_model->get_id($id)
             );
             $data['tag_title'] = 'Quản lý khách hàng';
             $this->template->load_admin_view('sale/customer_edit', $data_temp, $data);
@@ -71,9 +71,9 @@ class Customer extends CI_Controller {
         else {
             // submit editing user
             $post_array = $this->input->post();
-            $user = $this->user_model->get_id($post_array['id']);
+            $customer = $this->customer_model->get_id($post_array['id']);
             if ($post_array['password'] == '') {
-                $post_array['password'] = $user['password'];
+                $post_array['password'] = $customer['password'];
             }
             unset($post_array['old_password']);
             unset($post_array['confirm']);

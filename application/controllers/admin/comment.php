@@ -38,6 +38,17 @@ class Comment extends CI_Controller {
         }
     }
 
+    public function approve($id = '', $token = '') {
+        if ($id == '') redirect('admin/comment');
+        if ($token != $this->security->get_csrf_hash()) show_404();
+        else {
+            $comment = $this->comment_model->get_id($id);
+            $comment['status'] = 1;
+            $this->comment_model->update($id, $comment);
+            redirect('admin/comment');
+        }
+    }
+
     public function mass_action() {
         $action = $this->input->post('action', true);
         if ($action == '') redirect('admin/comment');

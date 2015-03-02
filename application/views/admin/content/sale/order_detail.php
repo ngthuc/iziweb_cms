@@ -40,8 +40,8 @@
                                 <td><?= $order['amount'] ?></td>
                             </tr>
                             <tr>
-                                <td>Thông tin</td>
-                                <td><?= $order['order_info'] ?></td>
+                                <td>Mã KH</td>
+                                <td><?= $order['customer_id'] ?></td>
                             </tr>
                             <tr>
                                 <td>Tên KH</td>
@@ -60,8 +60,8 @@
                                 <td><?= $order['phone'] ?></td>
                             </tr>
                             <tr>
-                                <td>Mã KH</td>
-                                <td><?= $order['customer_id'] ?></td>
+                                <td>Thông tin</td>
+                                <td><?= $order['order_info'] ?></td>
                             </tr>
                             <tr>
                                 <td>Trạng thái</td>

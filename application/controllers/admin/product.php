@@ -161,14 +161,16 @@ class Product extends CI_Controller {
     }
 
     public function delete($id = '', $token = '') {
-        if ($id == '') redirect('admin/product');
-        if ($token != $this->security->get_csrf_hash()) show_404();
-        else {
-            $this->product_model->delete($id);
-            $this->product_attr_model->delete_product_attr($id);
-            $this->product_img_model->delete_product_img($id);
-            redirect('admin/product');
-        }
+        echo $token;
+        echo '<br>'.var_dump($this->session->userdata('ci_session'));
+//        if ($id == '') redirect('admin/product');
+//        if ($token != $this->session->userdata("token")) show_404();
+//        else {
+//            $this->product_model->delete($id);
+//            $this->product_attr_model->delete_product_attr($id);
+//            $this->product_img_model->delete_product_img($id);
+//            redirect('admin/product');
+//        }
     }
 
     public function mass_action() {

@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a id="menu-button" type="button" class="pull-left">
-                <i class="fa fa-shopping-cart fa-lg"></i>
+                <i class="fa fa-reorder fa-lg"></i>
             </a>
             <a id="menu-logo" class="navbar-brand">
                 Iziweb Admin

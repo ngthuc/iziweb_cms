@@ -23,8 +23,10 @@
                         <th><input type="checkbox" id="check-all"></th>
                         <th>Id</th>
                         <th>Username</th>
-                        <th>Email</th>
                         <th>Tên KH</th>
+                        <th>Email</th>
+                        <th>SĐT</th>
+                        <th>Địa chỉ</th>
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
                     </tr>
@@ -33,9 +35,11 @@
                             <td><input type="checkbox" name="check[<?= $item['id'] ?>]" class="row-checkbox" id="<?= $item['id'] ?>"></td>
                             <td><?= $item['id'] ?></td>
                             <td><?= $item['username'] ?></td>
-                            <td><?= $item['email'] ?></td>
                             <td><?= $item['full_name'] ?></td>
-                            <td><?= $item['status']==1?'<span class="text-danger">Đã kích hoạt</span>':'Chưa kích hoạt' ?></td>
+                            <td><?= $item['email'] ?></td>
+                            <td><?= $item['phone'] ?></td>
+                            <td><?= $item['address'] ?></td>
+                            <td><?= $item['status']==0?'<span class="text-danger">Chưa kích hoạt</span>':'Đã kích hoạt' ?></td>
                             <td>
                                 <a data-toggle="tooltip" data-placement="left" class="btn btn-sm btn-primary" title="Sửa"
                                    href="<?= BASE_URL ?>admin/customer/edit/<?= $item['id'] ?>">

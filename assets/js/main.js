@@ -54,10 +54,10 @@ $(document).ready(function() {
     if ($("form .collapse").find(".error-message").length > 0) {
         $("form .collapse").addClass("in");
     }
+});
 
-    // tool tip
-    $(function () {
-        $(".date-picker").datepicker({format: 'yyyy-mm-dd'});
-        $('[data-toggle="tooltip"]').tooltip();
-    });
+// tool tip
+$(function () {
+    $(".date-picker").datepicker({format: 'yyyy-mm-dd'});
+    $('[data-toggle="tooltip"]').tooltip();
 });

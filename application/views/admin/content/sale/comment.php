@@ -22,7 +22,9 @@
                         <th>Thời gian</th>
                         <th>User</th>
                         <th>Email</th>
+                        <th>SĐT</th>
                         <th>Nội dung</th>
+                        <th>Trạng thái</th>
                         <th>Thao tác</th>
                     </tr>
                     <?php foreach ($comments as $item): ?>
@@ -32,12 +34,16 @@
                             <td><?= $item['comment_time'] ?></td>
                             <td><?= $item['username'] ?></td>
                             <td><?= $item['email'] ?></td>
+                            <td><?= $item['phone'] ?></td>
                             <td><?= $item['content'] ?></td>
+                            <td><?= $item['status']==0?'<span class="text-danger">Chưa duyệt</span>':'Đã duyệt' ?></td>
                             <td>
-                                <a data-toggle="tooltip" data-placement="left" class="btn btn-sm btn-primary" title="Xem chi tiết" target="_blank"
-                                    href="<?= BASE_URL ?>admin/comment/view/<?= $item['product_id'] ?>">
-                                    <i class="fa fa-envelope"></i>
+                                <?php if ($item['status']==0): ?>
+                                <a data-toggle="tooltip" data-placement="left" class="btn btn-sm btn-primary" title="Duyệt"
+                                   href="<?= BASE_URL ?>admin/comment/approve/<?= $item['id'].'/'.$this->security->get_csrf_hash() ?>">
+                                    <i class="fa fa-check"></i>
                                 </a>
+                                <?php endif; ?>
                                 <a data-toggle="tooltip" data-placement="right" onclick="return confirm('Bạn có chắc chắn xóa?');" class="btn btn-sm btn-danger" title="Xóa"
                                     href="<?= BASE_URL ?>admin/comment/delete/<?= $item['id'].'/'.$this->security->get_csrf_hash() ?>">
                                     <i class="fa fa-remove"></i>

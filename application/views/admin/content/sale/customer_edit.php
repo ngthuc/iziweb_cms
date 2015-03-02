@@ -20,40 +20,40 @@
                 <h2 class="panel-title"><i class="fa fa-pencil"></i> Sửa khách hàng</h2>
             </div>
             <div class="panel-body">
-                <?= form_open('admin/customer/edit/'.$user['id'], array('id'=>'main-form', 'class'=>'form-horizontal')); ?>
-                <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                <?= form_open('admin/customer/edit/'.$customer['id'], array('id'=>'main-form', 'class'=>'form-horizontal')); ?>
+                <input type="hidden" name="id" value="<?= $customer['id'] ?>">
                 <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-username">Username:</label>
                     <div class="col-sm-9">
-                        <input type="text" name="username" value="<?= $user['username'] ?>" placeholder="Username" id="input-username" class="form-control">
+                        <input type="text" name="username" value="<?= $customer['username'] ?>" placeholder="Username" id="input-username" class="form-control">
                         <?= form_error('username') ?>
                     </div>
                 </div>
                 <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-email">Email:</label>
                     <div class="col-sm-9">
-                        <input type="email" name="email" value="<?= $user['email'] ?>" placeholder="Email" id="input-email" class="form-control">
+                        <input type="email" name="email" value="<?= $customer['email'] ?>" placeholder="Email" id="input-email" class="form-control">
                         <?= form_error('email') ?>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Họ tên:</label>
                     <div class="col-sm-9">
-                        <input type="text" name="full_name" value="<?= $user['full_name'] ?>" placeholder="Họ tên đầy đủ" class="form-control">
+                        <input type="text" name="full_name" value="<?= $customer['full_name'] ?>" placeholder="Họ tên đầy đủ" class="form-control">
                         <?= form_error('full_name') ?>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Địa chỉ:</label>
                     <div class="col-sm-9">
-                        <input type="text" name="address" value="<?= $user['address'] ?>" placeholder="Địa chỉ" class="form-control">
+                        <input type="text" name="address" value="<?= $customer['address'] ?>" placeholder="Địa chỉ" class="form-control">
                         <?= form_error('address') ?>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Số điện thoại:</label>
                     <div class="col-sm-9">
-                        <input type="text" name="phone" value="<?= $user['phone'] ?>" placeholder="Số điện thoại" class="form-control">
+                        <input type="text" name="phone" value="<?= $customer['phone'] ?>" placeholder="Số điện thoại" class="form-control">
                         <?= form_error('phone') ?>
                     </div>
                 </div>
