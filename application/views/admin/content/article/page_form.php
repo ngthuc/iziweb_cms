@@ -58,7 +58,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Tóm tắt:</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" name="excerpt" placeholder="Để trống nếu muốn mặc định"></textarea>
+                        <textarea rows="7" class="form-control" name="excerpt" placeholder="Để trống nếu muốn mặc định"></textarea>
                         <?= form_error('excerpt') ?>
                     </div>
                 </div>
@@ -67,6 +67,13 @@
                     <div class="col-sm-9">
                         <textarea id="editor" class="form-control" name="content"></textarea>
                         <?= form_error('content') ?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Tag bài viết:</label>
+                    <div class="col-sm-9">
+                        <input name="tags" class="form-control" type="text" value="" data-role="tagsinput" />
+                        <?= form_error('tags') ?>
                     </div>
                 </div>
                 <div class="form-group">
@@ -115,6 +122,8 @@
         });
 
         // editor
-        CKEDITOR.replace("editor");
+        CKEDITOR.replace("editor", {
+            height: '800'
+        });
     });
 </script>

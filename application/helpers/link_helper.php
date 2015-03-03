@@ -57,6 +57,11 @@ function convert_to_sql_array($array, $attr) {
     return $sqlStr;
 }
 
+function convert_str_to_array($str) {
+    // explode string to array, trim space, unique
+    if ($str == '') return array();
+    return array_unique(array_map('trim', explode(',', $str)));
+}
 
 function post_href($post)
 {

@@ -9,23 +9,22 @@ class Page extends CI_Controller {
         }
 
         $this->load->model(array('topic_model', 'post_model'));
+        $this->load->library('tag');
         $this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
     }
 
-    public function index($topic = 0, $page = 1) {
+    public function index($page = 1) {
         $per_page = 20;
         $where = "post_type = 'page'";
 
-        $topics = $this->topic_model->get();
         $posts = $this->post_model->get_by_pagination($page, $per_page, $where, 'post.id DESC');
         $config = array(
             'url' => 'admin/page',
             'per-page' => $per_page,
-            'total' => $this->post_model->count()
+            'total' => $this->post_model->count($where)
         );
 
         $data_temp['content'] = array(
-            'topics'=>$topics,
             'posts'=>$posts,
             'pagination'=>pagination($config, $page)
         );
@@ -37,7 +36,7 @@ class Page extends CI_Controller {
         $per_page = 20;
         $where = "post_type = 'page' AND title LIKE '%".$key."%'";
         $posts = $this->post_model->get_by_pagination($page, $per_page, $where, 0, 'post.id DESC');
-        $topics = $this->topic_model->get();
+
         $config = array(
             'url' => ('admin/post/search/'.$key),
             'per-page' => $per_page,
@@ -45,7 +44,6 @@ class Page extends CI_Controller {
         );
 
         $data_temp['content'] = array(
-            'topics'=>$topics,
             'posts'=>$posts,
             'pagination'=>pagination($config, $page)
         );
@@ -68,8 +66,16 @@ class Page extends CI_Controller {
             // add new
             $post_array = $this->input->post();
             $post_array['post_type'] = 'page';
+            if ($post_array['post_date'] == '') $post_array['post_date'] = date('Y-m-d');
+            if ($post_array['excerpt'] == '') {
+                $post_array['excerpt'] = strip_tags(implode(' ', array_slice(explode(' ', $post_array['content']), 0, NUMBE_EXCERPT_WORDS)));
+            }
+            $tag_array = convert_str_to_array($post_array['tags']);
+            // to remove duplicate tags
+            $post_array['tags'] = implode(',', $tag_array);
 
-            $this->post_model->insert($post_array);
+            $just_insert_id = $this->post_model->insert($post_array);
+            $this->tag->make_tag($tag_array, $just_insert_id);
             redirect('admin/page');
         }
     }
@@ -89,8 +95,19 @@ class Page extends CI_Controller {
         else {
             // submit editing
             $post_array = $this->input->post();
+            if ($post_array['post_date'] == '') $post_array['post_date'] = date('Y-m-d');
+            if ($post_array['excerpt'] == '') {
+                $post_array['excerpt'] = strip_tags(implode(' ', array_slice(explode(' ', $post_array['content']), 0, NUMBE_EXCERPT_WORDS)));
+            }
+            $tag_array = convert_str_to_array($post_array['tags']);
+            // to remove duplicate tags
+            $post_array['tags'] = implode(',', $tag_array);
 
             $this->post_model->update($post_array['id'], $post_array);
+            // delete post_tag then re-insert
+            $this->tag->delete_tag($post_array['id']);
+            $this->tag->make_tag($tag_array, $post_array['id']);
+
             redirect('admin/page');
         }
     }
@@ -99,6 +116,7 @@ class Page extends CI_Controller {
         if ($id == '') redirect('admin/page');
         if ($token != $this->security->get_csrf_hash()) show_404();
         else {
+            $this->tag->delete_tag($id);
             $this->post_model->delete($id);
             redirect('admin/page');
         }
@@ -109,9 +127,10 @@ class Page extends CI_Controller {
         if ($action == '') redirect('admin/page');
         if ($action == 'delete') {
             foreach ($this->input->post('check') as $key=>$value) {
+                $this->tag->delete_tag($key);
                 $this->post_model->delete($key);
             }
-            redirect('/admin/page');
+            redirect('admin/page');
         }
     }
 }

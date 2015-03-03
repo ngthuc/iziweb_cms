@@ -99,6 +99,7 @@ class Topic extends CI_Controller {
         if ($token != $this->security->get_csrf_hash()) show_404();
         else {
             $this->topic_model->delete($id);
+            $this->post_model->delete_where("topic_id = $id");
             redirect('admin/topic');
         }
     }
@@ -109,8 +110,9 @@ class Topic extends CI_Controller {
         if ($action == 'delete') {
             foreach ($this->input->post('check') as $key=>$value) {
                 $this->topic_model->delete($key);
+                $this->post_model->delete_where("topic_id = $key");
             }
-            redirect('/admin/topic');
+            redirect('admin/topic');
         }
     }
 }

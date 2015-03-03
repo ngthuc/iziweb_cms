@@ -43,8 +43,8 @@
                         <th>Id</th>
                         <th>Tiêu đề</th>
                         <th>Ngày đăng</th>
-                        <th>Thumbnail</th>
-                        <th>Tóm tắt</th>
+                        <th>Tác giả</th>
+                        <th>Lượt xem</th>
                         <th>Trạng thái</th>
                         <th>Thao tác</th>
                     </tr>
@@ -54,9 +54,9 @@
                             <td><?= $item['id'] ?></td>
                             <td><?= $item['title'] ?></td>
                             <td><?= $item['post_date'] ?></td>
-                            <td><img class="product-thumbnail" src="<?= $item['thumbnail'] ?>"></td>
-                            <td><?= $item['excerpt'] ?></td>
-                            <td><?= $item['status'] ?></td>
+                            <td><?= $item['author'] ?></td>
+                            <td><?= $item['views'] ?></td>
+                            <td><?= $item['status']==1?'Hiển thị':'Ẩn' ?></td>
                             <td>
                                 <a data-toggle="tooltip" data-placement="left" class="btn btn-sm btn-primary" title="Sửa"
                                    href="<?= BASE_URL ?>admin/page/edit/<?= $item['id'] ?>">

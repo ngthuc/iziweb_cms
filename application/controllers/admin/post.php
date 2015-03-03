@@ -8,8 +8,9 @@ class Post extends CI_Controller {
             redirect('/admin/login');
         }
 
-        $this->load->model(array('topic_model', 'post_model'));
+        $this->load->model(array('topic_model', 'post_model', 'tag_model', 'post_tag_model'));
         $this->load->helper('topic_option');
+        $this->load->library('tag');
         $this->form_validation->set_error_delimiters('<p class="error-message">', '</p>');
     }
 
@@ -68,11 +69,20 @@ class Post extends CI_Controller {
             $this->template->load_admin_view('article/post_form', $data_temp, $data);
         }
         else {
-            // add new
+
+//            // add new
             $post_array = $this->input->post();
             $post_array['post_type'] = 'post';
+            if ($post_array['post_date'] == '') $post_array['post_date'] = date('Y-m-d');
+            if ($post_array['excerpt'] == '') {
+                $post_array['excerpt'] = strip_tags(implode(' ', array_slice(explode(' ', $post_array['content']), 0, NUMBE_EXCERPT_WORDS)));
+            }
+            $tag_array = convert_str_to_array($post_array['tags']);
+            // to remove duplicate tags
+            $post_array['tags'] = implode(',', $tag_array);
 
-            $this->post_model->insert($post_array);
+            $just_insert_id = $this->post_model->insert($post_array);
+            $this->tag->make_tag($tag_array, $just_insert_id);
             redirect('admin/post');
         }
     }
@@ -92,8 +102,19 @@ class Post extends CI_Controller {
         else {
             // submit editing
             $post_array = $this->input->post();
+            if ($post_array['post_date'] == '') $post_array['post_date'] = date('Y-m-d');
+            if ($post_array['excerpt'] == '') {
+                $post_array['excerpt'] = strip_tags(implode(' ', array_slice(explode(' ', $post_array['content']), 0, NUMBE_EXCERPT_WORDS)));
+            }
+            $tag_array = convert_str_to_array($post_array['tags']);
+            // to remove duplicate tags
+            $post_array['tags'] = implode(',', $tag_array);
 
             $this->post_model->update($post_array['id'], $post_array);
+            // delete post_tag then re-insert
+            $this->tag->delete_tag($post_array['id']);
+            $this->tag->make_tag($tag_array, $post_array['id']);
+
             redirect('admin/post');
         }
     }
@@ -102,6 +123,7 @@ class Post extends CI_Controller {
         if ($id == '') redirect('admin/post');
         if ($token != $this->security->get_csrf_hash()) show_404();
         else {
+            $this->tag->delete_tag($id);
             $this->post_model->delete($id);
             redirect('admin/post');
         }
@@ -112,6 +134,7 @@ class Post extends CI_Controller {
         if ($action == '') redirect('admin/post');
         if ($action == 'delete') {
             foreach ($this->input->post('check') as $key=>$value) {
+                $this->tag->delete_tag($key);
                 $this->post_model->delete($key);
             }
             redirect('/admin/post');

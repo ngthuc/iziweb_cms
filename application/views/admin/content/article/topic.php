@@ -24,8 +24,8 @@
                         <th>Id</th>
                         <th>Tên</th>
                         <th>Đường dẫn</th>
-                        <th>Trạng thái</th>
                         <th>Chủ đề cha</th>
+                        <th>Trạng thái</th>
                         <th>Thao tác</th>
                     </tr>
                     <?php foreach ($topics as $item): ?>
@@ -34,7 +34,6 @@
                             <td><?= $item['id'] ?></td>
                             <td><?= $item['name'] ?></td>
                             <td><?= $item['slug'] ?></td>
-                            <td><?= $item['status'] ?></td>
                             <td>
                                 <?php foreach ($topics as $parent): ?>
                                     <?php if ($parent['id'] == $item['parent_id']): ?>
@@ -42,6 +41,7 @@
                                     <?php break; endif; ?>
                                 <?php endforeach; ?>
                             </td>
+                            <td><?= $item['status']==1?'Hiển thị':'Ẩn' ?></td>
                             <td>
                                 <a data-toggle="tooltip" data-placement="left" class="btn btn-sm btn-primary" title="Sửa"
                                    href="<?= BASE_URL ?>admin/topic/edit/<?= $item['id'] ?>">
