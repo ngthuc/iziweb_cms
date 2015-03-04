@@ -191,3 +191,11 @@ ul#images-list>li>button:hover {
 .statistic-box>.box-footer>a:hover {
     color: #fff
 }
+.menu-option ul>li {
+    padding-left: 5%
+}
+.check-all-menu {
+    margin-top: 8px;
+    color: #1E91CF;
+    text-decoration: underline;
+}
